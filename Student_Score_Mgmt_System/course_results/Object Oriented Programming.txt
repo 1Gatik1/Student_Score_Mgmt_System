@@ -1,0 +1,7 @@
+StudentID | StudentName | Result
+2 | Riya Verma | Pass
+3 | Arjun Singh | Pass
+5 | Karan Mehta | Pass
+6 | Ananya Gupta | Pass
+8 | Neha Sharma | Pass
+9 | Vivek Malhotra | Fail

@@ -1,0 +1,123 @@
+Test Case Id: TC-01
+Title: Verify application starts and connects to MySQL database
+Test Steps:
+1. Open the project in Eclipse or run the Java application from the command line.
+2. Ensure MySQL server is running.
+3. Confirm the DB credentials in DatabaseConnection.java are correct.
+4. Run StudentScoreApp.java.
+Expected Result:
+- The application should display the startup banner.
+- The console should print "Step 1: Connecting to database..."
+- The application should connect successfully and print "Connection successful!"
+Actual Result:
+- when the test passed a success message was displayed, otherwise an error stack trace was shown.
+
+Status:
+- Passed
+
+Test Case Id: TC-02
+Title: Validate CSV file data before insertion
+Test Steps:
+1. Place a valid CSV file in the configured input location.
+2. Ensure the CSV contains required columns such as student_id, CourseID, and score.
+3. Run StudentScoreApp.java.
+4. Observe validation output in the console.
+Expected Result:
+- The application should read the CSV successfully.
+- Validation should pass for valid records.
+- Invalid rows should be reported in the validation summary.
+Actual Result:
+- it passed the validation and the valid records were displayed in the console, while invalid records were reported with specific error messages.
+Status:
+- completed
+
+Test Case Id: TC-03
+Title: Insert valid student scores into student_score table
+Test Steps:
+1. Make sure the database contains the students and courses tables.
+2. Prepare a CSV file with valid student_id, course_id, score, and result values.
+3. Run StudentScoreApp.java.
+4. Check the database table student_score after execution.
+Expected Result:
+- Records should be inserted successfully.
+- The insertion report should display a status of SUCCESS.
+- Rows inserted count should match the number of valid records.
+Actual Result:
+- test passed and the records were inserted successfully into the student_score table, with the insertion report showing SUCCESS and the correct count of inserted rows.
+Status:
+- Completed
+
+Test Case Id: TC-04
+Title: Generate course-wise output files
+Test Steps:
+1. Run StudentScoreApp.java after successful database insertion.
+2. Wait for the application to reach Step 4.
+3. Check the project folder named course_results.
+Expected Result:
+- A separate .txt file should be created for each course.
+- Each file should contain records in the format:
+  StudentID | StudentName | Result
+- The file names should match the course names or sanitized versions of them.
+Actual Result:
+- To be filled during testing
+Status:
+- Pending
+
+Test Case Id: TC-05
+Title: Generate combined student performance report
+Test Steps:
+1. Run StudentScoreApp.java successfully.
+2. Wait for Step 5 of the application.
+3. Open the folder all_student_reports.
+4. Open all_student_course_scores.txt.
+Expected Result:
+- A text file should be created in the all_student_reports folder.
+- Each student should appear on one line.
+- Subject entries should show course name, score, and result in a readable aligned format.
+Actual Result:
+- To be filled during testing
+Status:
+- Pending
+
+Test Case Id: TC-06
+Title: Test connection failure handling
+Test Steps:
+1. Stop the MySQL server or use incorrect database credentials.
+2. Run StudentScoreApp.java.
+Expected Result:
+- The application should print an error message indicating database connection failure.
+- The program should exit without crashing unexpectedly.
+Actual Result:
+- To be filled during testing
+Status:
+- Pending
+
+Test Case Id: TC-07
+Title: Test invalid CSV input handling
+Test Steps:
+1. Prepare a CSV file with missing columns or invalid values.
+2. Run StudentScoreApp.java.
+3. Review validation output and the database state.
+Expected Result:
+- The program should report validation errors.
+- Invalid records should not be inserted into the database.
+- The application should continue gracefully or stop with a clear error message.
+Actual Result:
+- To be filled during testing
+Status:
+- Pending
+
+Test Case Id: TC-08
+Title: Check final application cleanup
+Test Steps:
+1. Run StudentScoreApp.java fully.
+2. Observe console output at the end of execution.
+3. Confirm the database connection is closed.
+Expected Result:
+- The application should print the shutdown message.
+- The database connection should be closed in the finally block.
+- No hanging database sessions should remain.
+Actual Result:
+- To be filled during testing
+Status:
+- Pending

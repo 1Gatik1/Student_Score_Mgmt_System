@@ -1,0 +1,8 @@
+StudentID | StudentName | Result
+1 | Aarav Sharma | Pass
+2 | Riya Verma | Pass
+4 | Simran Kaur | Pass
+5 | Karan Mehta | Pass
+7 | Rahul Kumar | Pass
+8 | Neha Sharma | Pass
+10 | Ishita Kapoor | Pass

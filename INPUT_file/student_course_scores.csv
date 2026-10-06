@@ -1,0 +1,41 @@
+student_id,name,course_id,course_name,score
+1,Aarav Sharma,1,Data Structures and Algorithms,82
+1,Aarav Sharma,3,Operating Systems,76
+1,Aarav Sharma,4,Computer Networks,31
+1,Aarav Sharma,6,Web Development,91
+2,Riya Verma,1,Data Structures and Algorithms,74
+2,Riya Verma,2,Database Management Systems,89
+2,Riya Verma,5,Object Oriented Programming,81
+2,Riya Verma,6,Web Development,93
+3,Arjun Singh,2,Database Management Systems,68
+3,Arjun Singh,3,Operating Systems,79
+3,Arjun Singh,4,Computer Networks,85
+3,Arjun Singh,5,Object Oriented Programming,72
+4,Simran Kaur,1,Data Structures and Algorithms,95
+4,Simran Kaur,2,Database Management Systems,87
+4,Simran Kaur,4,Computer Networks,90
+4,Simran Kaur,6,Web Development,84
+5,Karan Mehta,1,Data Structures and Algorithms,63
+5,Karan Mehta,3,Operating Systems,71
+5,Karan Mehta,5,Object Oriented Programming,78
+5,Karan Mehta,6,Web Development,86
+6,Ananya Gupta,2,Database Management Systems,92
+6,Ananya Gupta,3,Operating Systems,88
+6,Ananya Gupta,4,Computer Networks,77
+6,Ananya Gupta,5,Object Oriented Programming,94
+7,Rahul Kumar,1,Data Structures and Algorithms,56
+7,Rahul Kumar,2,Database Management Systems,23
+7,Rahul Kumar,4,Computer Networks,69
+7,Rahul Kumar,6,Web Development,81
+8,Neha Sharma,1,Data Structures and Algorithms,89
+8,Neha Sharma,3,Operating Systems,91
+8,Neha Sharma,5,Object Oriented Programming,85
+8,Neha Sharma,6,Web Development,96
+9,Vivek Malhotra,2,Database Management Systems,64
+9,Vivek Malhotra,3,Operating Systems,35
+9,Vivek Malhotra,4,Computer Networks,82
+9,Vivek Malhotra,5,Object Oriented Programming,39
+10,Ishita Kapoor,1,Data Structures and Algorithms,87
+10,Ishita Kapoor,2,Database Management Systems,95
+10,Ishita Kapoor,4,Computer Networks,89
+10,Ishita Kapoor,6,Web Development,92

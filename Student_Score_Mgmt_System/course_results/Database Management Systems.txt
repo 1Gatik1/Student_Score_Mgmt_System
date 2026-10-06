@@ -1,0 +1,8 @@
+StudentID | StudentName | Result
+2 | Riya Verma | Pass
+3 | Arjun Singh | Pass
+4 | Simran Kaur | Pass
+6 | Ananya Gupta | Pass
+7 | Rahul Kumar | Fail
+9 | Vivek Malhotra | Pass
+10 | Ishita Kapoor | Pass

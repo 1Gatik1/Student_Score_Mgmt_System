@@ -1,0 +1,132 @@
+/**
+ * SETUP INSTRUCTIONS FOR STUDENT SCORE MANAGEMENT SYSTEM
+ */
+
+=== PREREQUISITES ===
+1. Java JDK 8 or higher
+2. MySQL Server 8.0 or higher
+3. MySQL JDBC Driver (mysql-connector-java-x.x.x.jar)
+
+=== DATABASE SETUP ===
+1. Create the MySQL database:
+   CREATE DATABASE student_score;
+
+2. Create the required tables:
+   
+   -- Students table
+   CREATE TABLE students (
+       student_id INT PRIMARY KEY,
+       name VARCHAR(100) NOT NULL,
+       student_email VARCHAR(100),
+       parent_email VARCHAR(100)
+   );
+   
+   -- Courses table
+   CREATE TABLE courses (
+       course_id INT PRIMARY KEY,
+       course_name VARCHAR(100) NOT NULL
+   );
+   
+   -- Student Score table (main table for insertion)
+   CREATE TABLE student_score (
+       student_id INT NOT NULL,
+       course_id INT NOT NULL,
+       score FLOAT,
+       result VARCHAR(20),
+       PRIMARY KEY (student_id, course_id),
+       FOREIGN KEY (student_id) REFERENCES students(student_id),
+       FOREIGN KEY (course_id) REFERENCES courses(course_id)
+   );
+
+3. Ensure the database is accessible at localhost:3306 with your MySQL credentials
+
+=== JDBC DRIVER SETUP ===
+1. Download MySQL Connector/J from: https://dev.mysql.com/downloads/connector/j/
+2. Add the JAR file to your project's classpath
+3. For Eclipse: Right-click project > Build Path > Configure Build Path > Add External JAR
+
+=== FILE SETUP ===
+1. Place your CSV file at: E:\Java Student Mgmt Project\student_course_scores.csv
+
+2. CSV must contain at least these columns (names are case-sensitive):
+   - student_id (or StudentId, StudentID)
+   - CourseID (or courseID, courseId, course_id)
+   - score (or Score)
+   
+   Optional columns (will be skipped if not in database):
+   - CourseName (or course_name) - NOT inserted to student_score table
+   - result (or Result) - if your CSV has this column
+   - semester (or Semester) - if your CSV has this column
+
+3. Example CSV format for student_score table insertion:
+   student_id,CourseID,score,result
+   1,101,85.5,Pass
+   2,102,92.0,Pass
+   3,101,78.5,Pass
+
+4. Column Mapping:
+   The program automatically maps CSV columns to database columns:
+   - CourseID -> course_id
+   - score -> score
+   - student_id -> student_id
+   - result -> result (if present)
+
+=== CONFIGURATION ===
+1. In DatabaseConnection.java, update these settings:
+   - DB_USER: Your MySQL username (default: root)
+   - DB_PASSWORD: Your MySQL password
+   - DB_URL: Database connection URL (modify if needed)
+
+2. In StudentScoreApp.java:
+   - tableName is set to "student_score" (correct for insertion into student_score table)
+   - If you want to insert into a different table, change this variable
+
+3. Column Mapping:
+   The system automatically handles column name mismatches:
+   - CSV columns with different names are mapped to database columns
+   - Only columns that exist in the target table are inserted
+   - Non-existent columns are automatically skipped with a warning
+
+=== RUNNING THE APPLICATION ===
+1. Compile: javac -d bin src/*.java
+2. Run: java -cp bin StudentScoreApp
+
+=== CLASS DESCRIPTIONS ===
+
+DatabaseConnection.java
+- connectToDatabase(): Establishes connection to MySQL database
+- getConnection(): Returns existing connection
+- closeConnection(): Properly closes the connection
+
+StudentDataValidator.java
+- readAndValidateData(tableName): Reads CSV file and validates against database schema
+- Validates data types, lengths, and nullable constraints
+- Returns validated data and error list
+
+StudentDataInsert.java
+- insertValidatedData(): Inserts validated rows into database
+- insertDataWithReport(): Inserts with detailed result reporting
+- Supports batch insertion and transaction rollback on error
+
+StudentScoreApp.java
+- Main entry point for the application
+- Demonstrates complete workflow: connect -> validate -> insert
+
+=== ERROR HANDLING ===
+- Check console output for detailed error messages
+- Validation report shows any data integrity issues
+- Database errors are caught and logged
+- Transactions are rolled back on insertion failures
+
+=== TROUBLESHOOTING ===
+1. "MySQL JDBC Driver not found" - Add mysql-connector-java JAR to classpath
+2. "Connection refused" - Ensure MySQL server is running and accessible
+3. "Table not found" - Verify table name and database name are correct
+4. "Column count mismatch" - Ensure CSV has proper headers
+5. "Data type validation error" - Check data format against database schema
+6. "Unknown column X in field list" - Check if column exists in target table
+   - The program now automatically skips non-existent columns
+   - Check console output for "Skipping column" messages
+7. If CourseName is skipped but CourseID is inserted:
+   - This is expected behavior - CourseName is in courses table, not student_score table
+   - The student_score table only stores course_id (reference), not course_name
